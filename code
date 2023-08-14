@@ -7,7 +7,7 @@ from time import perf_counter
 class parsing:
     r"""
         f_html - html файл, по ссылкам которого будет запрашиваться информация.  
-        По умолчанию = C:\Users\User\www.htm__head 
+        По умолчанию = C:\Users\User\www.htm
         __head - защита от бана, во время запроса(лучше не изменять) 
         search - поиск ссылок в html файле по запросу (class_ = search). 
         По умолчанию = pep reference external
