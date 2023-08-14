@@ -53,7 +53,7 @@ class parsing:
             return js
             
     def pars(self, full: int, request: str, js: str) -> None:
-        """функция для парсинга"""
+        """метод для парсинга"""
         
         with (
               open(self.f_html, encoding='utf-8') as file,
