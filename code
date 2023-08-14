@@ -14,14 +14,21 @@ class parsing:
     """
        
     __head = {
-        "User-Agent": "Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/109.0.0.0 Safari/537.36 OPR/95.0.0.0 (Edition Yx 05)"
+        "User-Agent": "Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 \
+            (KHTML, like Gecko) Chrome/109.0.0.0 Safari/537.36 OPR/95.0.0.0 (Edition Yx 05)"
               }
     
-    def __init__(self, f_html: str = r'C:\Users\User\www.htm', search: str ='pep reference external'):
+    def __init__(
+                 self, f_html: str = r'C:\Users\User\www.htm', 
+                 search: str ='pep reference external'
+                 ) -> None:
         self.f_html = f_html
         self.search = search
         
-    def __call__(self, full: int = 10, request: str = 'python', js: str = r'C:\Users\User\infos_p.json'):
+    def __call__(
+                 self, full: int = 10, 
+                 request: str = 'python', js: str = r'C:\Users\User\infos_p.json'
+                 ) -> str:
         
         r"""
            full - максимальное количество запросов по ссылкам из html кода, 
@@ -37,12 +44,15 @@ class parsing:
             self.pars(full, request, js)
             print(f"Получение данных успешно завершилось!\
                     \nВы можете найти результат в файле: {js}")
+            self.infos = js
+                
         except Exception as e:
             print(f'Ошибка: {e.__class__.__name__}({e})')
         finally:
             print(f'Затрачено времени: {perf_counter() - start}')
+            return js
             
-    def pars(self, full, request, js):
+    def pars(self, full: int, request: str, js: str) -> None:
         """функция для парсинга"""
         
         with (
@@ -66,6 +76,8 @@ class parsing:
                     full -= 1
                     islen -= 1
                     print(f'Обработка...\nОсталось: {min([full, islen])}')
-        
-x = parsing()
-x(request='py')
+    
+    def clear(self) -> None:
+        with open(self.infos, 'w', encoding='utf-8'): 
+            pass
+        print("Файл очищен от информации")
