@@ -1,5 +1,3 @@
-#pip install Beautifulsoup4 lxml requests
-
 import requests, re, json
 from bs4 import BeautifulSoup
 from time import perf_counter
